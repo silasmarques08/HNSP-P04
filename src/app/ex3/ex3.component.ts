@@ -13,7 +13,7 @@ export class Ex3Component implements OnInit {
   cTitles: string[];
   isLoading: boolean;
   sortSwitch = true;
-  public choice: any;
+  choice: any;
   constructor(private requestService: RequestService) { }
 
   ngOnInit() {
@@ -56,7 +56,7 @@ export class Ex3Component implements OnInit {
 
       if (this.sortSwitch === true) {
 
-        this.cTransactions.sort((a, b) => ((a.amount) < (b.amount)) ? 1 : -1);
+        this.cTransactions.sort((a, b) => (parseInt(a.amount) < parseInt(b.amount)) ? 1 : -1);
         this.sortSwitch = false;
       }
 
