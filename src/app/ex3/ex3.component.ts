@@ -12,6 +12,7 @@ export class Ex3Component implements OnInit {
   cTransactions: any[];
   cTitles: string[];
   isLoading: boolean;
+  sortSwitch = true;
   public choice: any;
   constructor(private requestService: RequestService) { }
 
@@ -40,53 +41,68 @@ export class Ex3Component implements OnInit {
 
     if (this.choice === "id") {
 
-      if (this.cTransactions[0].id > this.cTransactions[1].id) {
+      if (this.sortSwitch === true) {
 
         this.cTransactions.sort((a, b) => (a.id > b.id) ? 1 : -1);
+        this.sortSwitch = false;
       }
 
       else {
         this.cTransactions.sort((a, b) => (a.id < b.id) ? 1 : -1);
+        this.sortSwitch = true;
       }
 
     } else if (this.choice === "amount") {
 
-      if (this.cTransactions[0].id > this.cTransactions[1].id) {
+      if (this.sortSwitch === true) {
 
-        this.cTransactions.sort((a, b) => (parseInt(a.amount) < parseInt(b.amount)) ? 1 : -1);
+        this.cTransactions.sort((a, b) => ((a.amount) < (b.amount)) ? 1 : -1);
+        this.sortSwitch = false;
       }
 
       else {
         this.cTransactions.sort((a, b) => (parseInt(a.amount) > parseInt(b.amount)) ? 1 : -1);
+        this.sortSwitch = true;
       }
 
 
     } else if (this.choice === "balance") {
 
-      if (this.cTransactions[0].id > this.cTransactions[1].id) {
+      if (this.sortSwitch === true) {
 
         this.cTransactions.sort((a, b) => (parseInt(a.balance) < parseInt(b.balance)) ? 1 : -1);
+        this.sortSwitch = false;
       }
 
       else {
         this.cTransactions.sort((a, b) => (parseInt(a.balance) > parseInt(b.balance)) ? 1 : -1);
+        this.sortSwitch = true;
       }
 
     } else if (this.choice === "label") {
 
-      if (this.cTransactions[0].id > this.cTransactions[1].id) {
+      if (this.sortSwitch === true) {
 
         this.cTransactions.sort((a, b) => (a.label > b.label) ? 1 : -1);
+        this.sortSwitch = false;
       }
 
       else {
         this.cTransactions.sort((a, b) => (a.label < b.label) ? 1 : -1);
+        this.sortSwitch = true;
       }
 
     } else if (this.choice === "date") {
+      if (this.sortSwitch === true) {
 
-      this.cTransactions.sort((a, b) => new Date(a.date).valueOf() - new Date(b.date).valueOf());
+        this.cTransactions.sort((a, b) => (a.date > b.date) ? 1 : -1);
+        this.sortSwitch = false;
+      }
 
+      else {
+        this.cTransactions.sort((a, b) => (a.date < b.date) ? 1 : -1);
+        this.sortSwitch = true;
+      }
     } else {
 
       alert("something went wrong with the sorting");
