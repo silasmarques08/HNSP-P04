@@ -1,0 +1,24 @@
+<table class="table border text-center col-12 my-4" *ngIf="!isLoading">
+    <thead>
+        <tr>
+            <th class="py-3 mx-2 bg-dark bg-gradient text-light" *ngFor="let title of cTitles"> {{title|uppercase}}
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>{{cDetails[0]}}</td>
+            <td>{{cDetails[1]}}</td>
+            <td>{{cDetails[2]}}</td>
+            <td>{{cDetails[3]}}</td>
+            <td>{{cDetails[4]}}</td>
+            <td>{{cDetails[5] | date:'EEEE, MMMM d, y, h:mm a'}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="col-5 mx-auto">
+    <a class="text-decoration-none text-reset" routerLink="/..">
+        <button type="button" class="btn btn-success w-100">Back</button>
+    </a>
+</div>

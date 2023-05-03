@@ -1,0 +1,50 @@
+<div class="row">
+    <form class="col-3 me-5">
+        <div class="form-group">
+            <label for="name">Insert name:</label>
+            <input [(ngModel)]="cName" name="name" id="name" type="text" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="font">Choose font:</label>
+            <select [(ngModel)]="cFont" name="font" id="font" class="form-control">
+                <option *ngFor="let font of cFontAll" [value]="font"> {{font}} </option>
+            </select>
+        </div>
+
+        <div class=" form-group">
+            <label for="size">Choose size:</label>
+            <input [(ngModel)]="cSize" name="size" type="number" id="size" class="form-control" required min="1">
+        </div>
+        <div class="radio">
+            <label for="alignS">Choose alignment:<br><input [(ngModel)]="cAlign" type="radio" name="align" id="alignS"
+                    value="text-left">
+                Left
+            </label>
+        </div>
+
+        <div class="radio">
+            <label for="alignC"><input [(ngModel)]="cAlign" type="radio" name="align" value="text-center" id="alignC">
+                Center
+            </label>
+        </div>
+
+        <div class="radio">
+            <label for="alignE"><input [(ngModel)]="cAlign" type="radio" name="align" value="text-right" id="alignE">
+                Right
+            </label>
+        </div>
+
+    </form>
+
+
+    <div class="col-7 my-auto ms-5 border border-success">
+        <h3 [style.font-size.px]="cSize" [style.font-family]="cFont" [ngClass]="{
+            'text-start' : cAlign=='text-left',
+            'text-center' : cAlign=='text-center',
+            'text-end' : cAlign=='text-right',
+        }">
+            HELLO {{ cName | uppercase}}
+        </h3>
+    </div>
+</div>

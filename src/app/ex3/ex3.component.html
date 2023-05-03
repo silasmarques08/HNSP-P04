@@ -1,0 +1,31 @@
+<table class="table border text-center col-12 my-4 " *ngIf="!isLoading">
+    <thead>
+        <tr>
+            <th class="py-3 mx-2 bg-dark bg-gradient text-light" *ngFor="let title of cTitles">
+                {{title|uppercase}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-sort-down" viewBox="0 0 16 16" (click)="onSort(title)">
+                    <path
+                        d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293V2.5zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
+                </svg>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let row of cTransactions">
+
+            <td class="py-2 px-0"><a class="text-decoration-none text-reset"
+                    [routerLink]="['details', row.id]">{{row.id}}</a></td>
+            <td class="py-2 px-0"><a class="text-decoration-none text-reset"
+                    [routerLink]="['details', row.id]">{{row.amount}}</a></td>
+            <td class="py-2 px-0"><a class="text-decoration-none text-reset"
+                    [routerLink]="['details', row.id]">{{row.balance}}</a></td>
+            <td class="py-2 px-0"><a class="text-decoration-none text-reset"
+                    [routerLink]="['details', row.id]">{{row.label}}</a></td>
+            <td class="py-2 px-0"><a class="text-decoration-none text-reset"
+                    [routerLink]="['details', row.id]">{{row.date | date:'MMM d, y, h:mm a'}}</a></td>
+
+        </tr>
+    </tbody>
+</table>

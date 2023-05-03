@@ -1,0 +1,47 @@
+<div class="row justify-content-between">
+
+    <form class="col-3">
+        <h2 class="text-center">Calculator</h2>
+        <div class=" form-group">
+            <label for="n1">Enter value</label>
+            <input [(ngModel)]="cN1" name="n1" type="number" id="n1" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="operator">Operation</label>
+            <select [(ngModel)]="cOperator" name="operator" id="operator" class="form-control">
+                <option *ngFor="let operator of cOperatorAll" [value]="operator">
+                    {{operator}}
+                </option>
+            </select>
+        </div>
+
+        <div class=" form-group">
+            <label for="n2">Enter value</label>
+            <input [(ngModel)]="cN2" name="n2" type="number" id="n2" class="form-control">
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-success col-12" (click)="onSolve()">Solve</button>
+        </div>
+    </form>
+
+    <div class="col-3 text-center d-flex flex-column p-0">
+        <h2>Result</h2>
+        <br><br><br><br><br>
+        <h3 class="border border-success" *ngIf="cResults.length>0">{{cResults[0].value}}</h3>
+    </div>
+
+    <div class="col-5 d-flex text-center flex-column p-0">
+        <h2>History</h2>
+        <ul class="list-unstyled text-start ">
+            <li class="d-flex flex-row justify-content-around my-2" *ngFor="let result of cResults">
+                Result: {{result.value}}<br>
+                Time: {{result.time}}<br>
+                Operation: {{result.request}}<br>
+                <button class="btn btn-outline-success btn-sm ms-3" (click)="onRemove(result)">Remove</button>
+            </li>
+        </ul>
+
+    </div>
+</div>
